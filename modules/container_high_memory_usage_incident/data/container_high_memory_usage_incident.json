@@ -3,15 +3,7 @@
   "description": "A Container High Memory Usage Incident occurs when the memory usage of a container exceeds a certain threshold, usually 90%. This can cause performance issues and potentially lead to system crashes. The incident should be resolved by identifying the root cause of the high memory usage and taking appropriate actions to reduce it.",
   "params": [
     {
-      "name": "PROCESS_ID",
-      "value": ""
-    },
-    {
       "name": "PATH_TO_BINARY",
-      "value": ""
-    },
-    {
-      "name": "CONTAINER_ID",
       "value": ""
     },
     {
@@ -19,7 +11,15 @@
       "value": ""
     },
     {
+      "name": "PROCESS_ID",
+      "value": ""
+    },
+    {
       "name": "NEW_MEMORY_LIMIT",
+      "value": ""
+    },
+    {
+      "name": "CONTAINER_ID",
       "value": ""
     },
     {
@@ -160,7 +160,7 @@
       "name": "cell_21",
       "type": "OP_LANG",
       "enabled": true,
-      "content": "host | host_name=$HOST_NAME | invoke_mem_usage_threshold($CONTAINER_ID)"
+      "content": "host | host_name=$HOST_NAME | invoke_docker_memory_usage($CONTAINER_ID)"
     },
     {
       "name": "cell_22",
@@ -172,7 +172,7 @@
       "name": "cell_23",
       "type": "OP_LANG",
       "enabled": true,
-      "content": "host | host_name=$HOST_NAME | invoke_update_container_memory_limit($CONTAINER_NAME, $NEW_MEMORY_LIMIT)"
+      "content": "host | host_name=$HOST_NAME | invoke_update_container_memory($CONTAINER_NAME, $NEW_MEMORY_LIMIT)"
     }
   ]
 }
